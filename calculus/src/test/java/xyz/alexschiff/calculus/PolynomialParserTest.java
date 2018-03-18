@@ -16,10 +16,4 @@ public class PolynomialParserTest {
         Polynomial myPolynomial = new Polynomial("1 3 2 -4");
         Assert.assertTrue(myPolynomial.equals(new Polynomial("1 3 2 -4")));
     }
-
-    @Test
-    public void testFractionEquality() {
-        Fraction fracA = new Fraction(1, 2, Sign.NEGATIVE);
-        Assert.assertTrue(fracA.equals(new Fraction(2, 4, Sign.NEGATIVE)));
-    }
 }
