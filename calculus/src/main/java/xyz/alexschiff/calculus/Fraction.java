@@ -1,13 +1,26 @@
 package xyz.alexschiff.calculus;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Fraction {
 
     private final int denominator;
+
+    public int getDenominator() {
+        return denominator;
+    }
+
     private final int numerator;
+
+    public int getNumerator() {
+        return numerator;
+    }
+
     private final Sign sign;
+
+    public Sign getSign() {
+        return sign;
+    }
 
     Fraction(int numerator, int denominator, Sign sign) throws IllegalArgumentException {
         if (denominator == 0) {
@@ -51,7 +64,21 @@ public class Fraction {
             return false;
         }
         Fraction rightFraction = (Fraction) rightObject;
-        return this.sign == rightFraction.sign && this.numerator * rightFraction.denominator == rightFraction
-                .numerator * this.denominator;
+        return this.getSign() == rightFraction.getSign() && this.getNumerator() * rightFraction.getDenominator() ==
+                rightFraction.getNumerator() * this.getDenominator();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(this.getSign() == Sign.NEGATIVE ? "-" : "+");
+        stringBuilder.append("(");
+        stringBuilder.append(this.getNumerator());
+        if (this.getDenominator() != 1) {
+            stringBuilder.append("/");
+            stringBuilder.append(this.getDenominator());
+        }
+        stringBuilder.append(")");
+        return stringBuilder.toString();
     }
 }
